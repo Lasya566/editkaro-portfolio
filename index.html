@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editkaro.in Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f7f3f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 3rem 1rem 2rem 1rem;
+  background: #e6e2dc;
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Category Buttons */
+.categories {
+  text-align: center;
+  margin: 2rem 0;
+}
+.category-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  border: none;
+  border-radius: 30px;
+  background: #2c3e50;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.category-btn:hover {
+  background: #34495e;
+  transform: translateY(-2px);
+}
+
+/* Portfolio Grid */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem 3rem 1rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+.card video {
+  width: 100%;
+  display: block;
+}
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #34495e;
+  padding: 0.8rem 1rem;
+}
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+#lightbox video {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 0.5s;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 { font-size: 2.2rem; }
+  .card h3 { font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+<header class="fade-in">
+  <h1>Editkaro.in Portfolio</h1>
+  <p>Social Media Marketing & Video Editing Agency</p>
+</header>
+
+<div class="categories fade-in-delay">
+  <button class="category-btn" onclick="filterCategory('all')">All</button>
+  <button class="category-btn" onclick="filterCategory('short')">Short-form Videos</button>
+  <button class="category-btn" onclick="filterCategory('long')">Long-form Videos</button>
+  <button class="category-btn" onclick="filterCategory('gaming')">Gaming</button>
+  <button class="category-btn" onclick="filterCategory('football')">Football Edits</button>
+  <button class="category-btn" onclick="filterCategory('ecommerce')">eCommerce Ads</button>
+  <button class="category-btn" onclick="filterCategory('documentary')">Documentary</button>
+  <button class="category-btn" onclick="filterCategory('color')">Color Grading</button>
+  <button class="category-btn" onclick="filterCategory('anime')">Anime</button>
+  <button class="category-btn" onclick="filterCategory('ads')">Ads</button>
+</div>
+
+<div class="container fade-in-delay" id="portfolio">
+  <!-- Sample Cards -->
+  <div class="card" data-category="short">
+    <video src="https://youtube.com/shorts/4qRo_tr42Ts?si=Uc76vMVKNclxgZTn" muted></video>
+    <h3>Short-form Video 1</h3>
+  </div>
+  <div class="card" data-category="long">
+    <video src="https://youtu.be/QoeFtMUjE3U?si=5LY5sPQbHjN8H_ce" muted></video>
+    <h3>Long-form Video 1</h3>
+  </div>
+  <div class="card" data-category="gaming">
+    <video src="https://youtu.be/dP1ZtdzMbBY?si=HL_Bufdk5tRRLmYD" muted></video>
+    <h3>Gaming Video 1</h3>
+  </div>
+  <div class="card" data-category="football">
+    <video src="https://youtu.be/1CB_xGYibQU?si=32UwxpM6DyyNrKlE" muted></video>
+    <h3>Football Edit 1</h3>
+  </div>
+  <div class="card" data-category="ecommerce">
+    <video src="https://youtu.be/K1m8wZ7aM4A?si=5rp4x7_HRrq_IFyX" muted></video>
+    <h3>eCommerce Ad 1</h3>
+  </div>
+  <div class="card" data-category="documentary">
+    <video src="https://youtu.be/oOReBkMrTew?si=8wIrSYWPZLriHK5Y" muted></video>
+    <h3>Documentary Video 1</h3>
+  </div>
+  <div class="card" data-category="color">
+    <video src="https://youtu.be/pAh83khT1no?si=SXIErsSre56gGTtj" muted></video>
+    <h3>Color Grading 1</h3>
+  </div>
+  <div class="card" data-category="anime">
+    <video src="https://youtu.be/VoQBXqcFiBo?si=_00fDXUj_vwUjMXS" muted></video>
+    <h3>Anime Video 1</h3>
+  </div>
+  <div class="card" data-category="ads">
+    <video src="https://youtu.be/ZNRSHr3b4uA?si=6RNYSqVMk0hv57FG" muted></video>
+    <h3>Ad Video 1</h3>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <video id="lightboxVideo" controls autoplay></video>
+</div>
+
+<footer class="fade-in">
+  &copy; 2025 Editkaro.in. All Rights Reserved.
+</footer>
+
+<script>
+// Category Filter
+function filterCategory(category) {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    if(category === 'all' || card.dataset.category === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxVideo = document.getElementById('lightboxVideo');
+document.querySelectorAll('.card video').forEach(video => {
+  video.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxVideo.src = video.src;
+    lightboxVideo.play();
+  });
+});
+function closeLightbox() {
+  lightboxVideo.pause();
+  lightboxVideo.src = '';
+  lightbox.style.display = 'none';
+}
+</script>
+</body>
+</html>
